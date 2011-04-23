@@ -1,0 +1,46 @@
+h1 Admin
+
+p Edit Post 
+  span (last edited: #{editedOn})
+
+p.edit.thumb Thumbnail: 
+  img(src="/img/"+thumbPic)
+  span edit
+
+p.edit.pic Pic: 
+  img(src="/img/"+pic)
+  span edit
+
+form#editPost(method="POST", action="/admin/editPost/"+_id, name="editPost")
+
+  label#js-selPic Choose:
+    select(name="pic")
+      - for (var key in images)
+        option(value=images[key], selected= images[key] == pic ? true : false) #{images[key]}
+
+  label#js-selThumb Choose:
+    select(name="thumbPic")
+      - for (var key in images)
+        option(value=images[key], selected= images[key] == thumbPic ? true : false) #{images[key]}
+
+  label Title: 
+    input#title(name="title", value=title)
+  label By: 
+    input#author(name="author", value=author)
+  label Post Body: 
+    textarea#body(name="body", cols="50", rows="25") #{body}
+
+  fieldset Publish?
+    label Yes 
+      input(type="radio", name="isPublished", value="1", checked: isPublished)
+
+    label No 
+      input(type="radio", name="isPublished", value="0", checked: !isPublished)
+
+  br
+  input(type="submit")
+
+p
+  a(href="/admin/createPost", title="Create New Post") New Post
+  br  
+  #{isPublished}

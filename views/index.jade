@@ -1,0 +1,8 @@
+h1#title= title
+
+ul.subNav
+  - for (var key in posts)
+    li.item
+      a(href="/post/"+posts[key]._id)
+        span= (+key + 1) + "."
+        img(src="/img/" + posts[key].thumbPic)

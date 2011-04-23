@@ -1,0 +1,19 @@
+div#info.tab
+  h2.tabTitle(title="About this experiment") About
+  div.tabContent
+    div.insetBox
+      h2.postTitle
+        a(href="/post/"+_id) #{title}
+      p.postContent
+        img(src="/img/"+pic)
+        !{body}
+    div.insetAttr
+      strong Posted: 
+      - var timeStamp = Date.parse(createdOn)
+      - timeStamp = new Date(timeStamp)
+      - timeStamp = (timeStamp.getMonth() + 1) + "/" + timeStamp.getDate() + "/" + timeStamp.getFullYear() + " @ " + timeStamp.toLocaleTimeString()
+      #{timeStamp}
+      span
+        a(href="/post/"+_id) +
+
+p this is new here

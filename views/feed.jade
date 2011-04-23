@@ -1,0 +1,17 @@
+!!! xml
+rss(version="2.0")
+  channel
+    title busticated.co - latest updates
+    link http://www.busticated.co/
+    description hi! i'm matt. busticated.co is where i play around with code and learn how to break things in (hopefully) interesting ways. enjoy!
+    generator busticated.co
+  
+    - for (var key in posts)
+      item
+        pubDate= posts[key].createdOn
+        title= posts[key].title
+        link #{baseURL + "/post/" + posts[key]._id}
+        guid #{baseURL + "/post/" + posts[key]._id}
+        description <![CDATA[
+          \<img src="#{baseURL}/img/#{posts[key].pic}" />
+          !{posts[key].body} ]]>

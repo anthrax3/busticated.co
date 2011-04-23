@@ -1,0 +1,55 @@
+!!! 5
+/if lt IE 7
+  <html class="no-js ie6" lang="en">
+/if IE 7
+  <html class="no-js ie7" lang="en">
+/if IE 8
+  <html class="no-js ie8" lang="en">
+//[if (gte IE 9)|!(IE)]><!
+html(class: 'no-js', lang: 'en')
+  //<![endif]
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+    meta(name="description", content="Busticated.co - a place for weird javascript and related nerdery.")
+    meta(name="author", content="Matthew Mirande")
+    title= title
+    link(rel="stylesheet", href="/css/main.css")
+    link(rel="icon", href="/img/favicon.gif", type="image/gif")
+    link(rel="apple-touch-icon", href="/img/apple-touch-icon.png")
+    link(rel="alternate", href="http://www.busticated.co/feed.rss", title="RSS 2.0", type="application/rss+xml")
+    script(src="/js/libs/modernizr-1.7.min.js")
+
+  body
+    div#nav.nav.home
+      a.icon(href="/") H
+    div#feed.nav.feed
+      a.icon(title="Click for the RSS feed", href="/feed.rss") f
+
+    div#main!= body
+    
+      div#contact.tab
+        h2.tabTitle(title="My infos &amp; other projects") Contact
+        div.tabContent
+          div.insetBox.clearfix
+            img.avatar(src="/img/avatar-ani.gif", alt="Adjusting picture...", title="Wheeee!!...") 
+            span Hi! I'm Matt. Busticated.org is where I play around with code and learn how to break things in (hopefully) interesting ways. Enjoy!
+
+          ul.insetList
+            li
+              a(href="http://chrln.com", title="Why yes, I play the rock music") charlene
+            li
+              a(href="http://www.thebrobots.com", title="Awesome music tumblog I contribute to) brobots!
+            li
+              a(href="http://twitter.com/b_sted", title="@b_sted") twitter
+            li
+              a(href="http://forrst.com/people/busticated", title="Desgin &amp; code nerding") forrst
+            li
+              a(href="http://scr.im/bstcted", title="Say hello!") email
+
+    -//fancy jquery fallback via html5boilerplate
+    -//script(src: "//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js")
+    -//script
+      -//window.jQuery || document.write('<script src="/js/libs/jquery-1.5.2.js">\\x3C/script>')
+    
+    script(data-main="/js/main", src="/js/require-jquery.js")
