@@ -6,9 +6,9 @@ require( {
   },[
     "jquery",
 		"modules/utils",
-    "modules/animations",
+    "modules/guessWord",
     "libs/jquery.store"
-	], function($, utils, ani) {
+	], function($, utils, guessWord) {
 
   // setup //////////////////////////////////////////////////////////
   $(".tabTitle").live("click", function() {
@@ -22,5 +22,30 @@ require( {
 
   // doc ready //////////////////////////////////////////////////////
   $(document).ready(function() {
+		var lastVisit = $.fn.store("get", "lastVisit");
+
+		//handle new vs returning visitors
+		if (lastVisit) {
+			guessWord.init({
+				$target : $("#title"),
+				mode : "simple",
+				cb : function(){
+					setTimeout(guessWord.start, 1000);
+				}
+			});
+		} else {
+			guessWord.init({
+				$target : $("#title"),
+				mode : "full",
+				cb : function(){
+					setTimeout(function(){
+						guessWord.init({ mode:"simple" });
+					}, 1000);
+				}
+			});
+		}
+		
+		//set visit timestamp
+		$.fn.store("set", {"lastVisit": Date.now() });
   });
 });

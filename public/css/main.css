@@ -292,9 +292,9 @@ strong {
 .feed {
   right: 10px;
   top: 10px;
-  background-color: #f7941d;
-  background-image: -moz-linear-gradient(0% 100% 90deg, #f7941d, #f7941d, #f7d754 95%);
-  background-image: -webkit-linear-gradient(0% 100% 90deg, #f7941d, #f7941d, #f7d754 95%);
+  background: #f7941d;
+  background: -moz-linear-gradient(0% 100% 90deg, #f7941d, #f7941d, #f7d754 95%);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f7d754), color-stop(0.9, #f7941d), to(#f7941d));
 }
 .feed a {
   padding: 8px 8px 6px 8px;
