@@ -10,6 +10,18 @@ var cfg = require("./cfg.js"),
 
 var app = module.exports = express.createServer();
 
+// Helpers //////////////////////////////////////////////////////////
+function NotFound(path){
+  this.name = "NotFound";
+  if (path) {
+    Error.call(this, "Cannot find " + path);
+    this.path = path;
+  } else {
+    Error.call(this, "Not Found");
+  }
+  Error.captureStackTrace(this, arguments.callee);
+};
+NotFound.prototype.__proto__ = Error.prototype;
 
 // Configuration ////////////////////////////////////////////////////
 app.configure(function(){
@@ -23,18 +35,39 @@ app.configure(function(){
     src: cfg.stylus.src,
     dest: cfg.stylus.dest
   }));
+  //app.use(express.logger(cfg.log));
   app.use(app.router);
   app.use(express.static(cfg.paths.static));
 });
 
 app.configure("development", function(){
+  console.log("I'm in DEV mode");
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
   cfg.hostname = "localhost:3000";
-  console.log("I'm in dev mode");
 });
 
 app.configure("production", function(){
-  app.use(express.errorHandler()); 
+  console.log("I'm in PROD mode");
+  //catch-all middleware
+  app.use(function(req, res, next){
+    next(new NotFound(req.url));
+  });
+
+  // Error Handling ///////////////////////////////////////////////////
+  app.error(function(err, req, res, next){
+    if (err instanceof NotFound) {
+      console.log("catching 404");
+      console.log(err);
+      res.render("404", { title: "error!", status: 404, error: err });
+    } else {
+      next(err);
+    }
+  });
+
+  app.error(function(err, req, res){
+    res.render("500", { title: "error!", status: 500, error: err });
+  });
+
 });
 
 
@@ -65,7 +98,7 @@ function loadPost(req, res, next){
   var postModel = db.model("BlogPost");
 
   postModel.findById(req.params.id, function(err, post){
-    if (err) {
+    if (err || !post) {
       return next(new Error("Could not find post"));
     } else {
       req.post = post.doc;

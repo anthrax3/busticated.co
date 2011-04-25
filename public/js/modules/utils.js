@@ -1,20 +1,23 @@
 define([], function() {
   // module setup ///////////////////////////////////////////////////
-  var tabDrawer = function tabDrawer(element, state) {
-      var $tabID = $(element),
-          parentID = $tabID.parent(),
-          containerHeight = parentID.outerHeight(),
-          contentID = $tabID.next(),
-          titleHeight = $tabID.outerHeight(),
-          containerHeight = parentID.outerHeight(),
-          contentHeight = contentID.outerHeight(true),
-          titleBorder = parseInt($tabID.css("border-bottom-width"), 10),
-          height = (titleHeight - titleBorder) - containerHeight;
-      
-      state = state || height;
-      parentID.animate( { "bottom" : state }, (-height / 0.75), function() {
-        $tabID.data("tabState" , state);
-      });
+  var tabCtrl = function tabCtrl(el){
+      var $tab = $(el),
+          $parent = $tab.parent(),
+          $content = $tab.next(),
+          parentHeight = $parent.outerHeight(),
+          tabHeight = $tab.outerHeight(),
+          height = tabHeight - parentHeight;
+
+      isOpen =  $tab.data("tabState") || false;
+
+      if (isOpen) {
+        $parent.animate( { "bottom" : height }, (-height / 0.75));
+        isOpen = false;
+      } else {
+        $parent.animate( { "bottom" : 0 }, (-height / 0.75));
+        isOpen = true;
+      }
+      $tab.data("tabState" , isOpen);
     },
     timers = { //main timers object
       id: 0,
@@ -59,7 +62,7 @@ define([], function() {
   
   // public api /////////////////////////////////////////////////////
   return {
-    tabDrawer : tabDrawer,
+    tabDrawer : tabCtrl,
     timers    : timers
   }
 });

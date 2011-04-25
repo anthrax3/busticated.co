@@ -11,18 +11,16 @@ require( {
 	], function($, utils, guessWord) {
 
   // setup //////////////////////////////////////////////////////////
-  $(".tabTitle").live("click", function() {
-    var state = $(this).data("tabState") || -1;
-    if (state < 0) {
-      utils.tabDrawer(this, 1);
-    } else {
-      utils.tabDrawer(this);
-    }
+  $("h2.tabTitle").live("click", function() {
+    utils.tabDrawer(this);
   });
 
   // doc ready //////////////////////////////////////////////////////
   $(document).ready(function() {
 		var lastVisit = $.fn.store("get", "lastVisit");
+
+    //close tabs
+    utils.tabDrawer("#info .tabTitle")
 
 		//handle new vs returning visitors
 		if (lastVisit) {
@@ -30,7 +28,7 @@ require( {
 				$target : $("#title"),
 				mode : "simple",
 				cb : function(){
-					setTimeout(guessWord.start, 1000);
+					setTimeout(guessWord.start, 2000);
 				}
 			});
 		} else {
@@ -40,7 +38,7 @@ require( {
 				cb : function(){
 					setTimeout(function(){
 						guessWord.init({ mode:"simple" });
-					}, 1000);
+					}, 2000);
 				}
 			});
 		}
