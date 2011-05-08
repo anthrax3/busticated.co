@@ -126,7 +126,7 @@ table {
 body {
   padding: 0;
   margin: 0;
-  font: normal 14px / 14px arial;
+  font: normal 14px/14px arial;
   overflow-y: scroll;
 }
 a {
@@ -158,7 +158,7 @@ strong {
 .icon {
   cursor: pointer;
   display: inline-block;
-  font: normal normal normal 22px / 1 Pictos;
+  font: normal normal normal 22px/1 Pictos;
   text-rendering: geometricPrecision;
   position: relative;
   text-transform: none;
@@ -285,13 +285,13 @@ strong {
 }
 .error {
   color: #f00;
-  font: bold 240px / 230px arial;
+  font: bold 240px/230px arial;
   text-align: center;
   text-transform: uppercase;
 }
 .error span {
   display: block;
-  font: bold 16px / 16px arial;
+  font: bold 16px/16px arial;
   margin: 60px 0 0;
 }
 .error a,
@@ -313,7 +313,7 @@ strong {
   overflow: hidden;
 }
 #title {
-  font: bold 223px / 190px arial;
+  font: bold 223px/190px arial;
   letter-spacing: -26px;
   text-align: left;
   text-rendering: optimizeLegibility;
@@ -380,7 +380,7 @@ strong {
   display: inline-block;
   position: relative;
   margin: 12px;
-  font: normal 72px / 60px arial;
+  font: normal 72px/60px arial;
   color: #000;
   width: 150px;
   height: 150px;
@@ -435,7 +435,7 @@ strong {
   border-radius: 10px 10px 0 0;
   color: #000;
   padding: 10px 10px 5px 10px;
-  font: bold 14px / 14px sans-serif;
+  font: bold 14px/14px sans-serif;
   text-transform: uppercase;
   cursor: pointer;
   pointer-events: auto;
@@ -541,7 +541,7 @@ ul.insetList {
 }
 .postTitle {
   position: absolute;
-  font: bold 16px / 12px arial;
+  font: bold 16px/12px arial;
   top: 68px;
   background: #ddd;
   background: rgba(0,0,0,0.6);
@@ -562,7 +562,7 @@ ul.insetList {
 .postTitle a:active,
 .postTitle a:visited {
   display: block;
-  padding: 10px;
+  padding: 10px 10px 8px 10px;
   text-shadow: none;
   color: #000;
   color: rgba(255,255,255,0.9);
@@ -595,7 +595,7 @@ ul.insetList {
   text-shadow: 0 1px 0 rgba(255,255,255,0.8);
 }
 .insetAttr span {
-  font: 16px / 10px arial;
+  font: 16px/10px arial;
   position: absolute;
   top: 8px;
   right: 8px;
@@ -604,7 +604,7 @@ ul.insetList {
 .insetAttr a:hover:before {
   content: "permalink:";
   padding: 0 12px 0 0;
-  font: 11px / 8px arial;
+  font: 11px/8px arial;
   position: absolute;
   right: 1px;
   text-transform: lowercase;
@@ -613,9 +613,9 @@ ul.insetList {
 #contact {
   position: fixed;
   left: 20px;
-  bottom: -280px;
+  bottom: -315px;
   width: 275px;
-  height: 311px;
+  height: 345px;
 }
 #info {
   position: fixed;
