@@ -126,7 +126,7 @@ table {
 body {
   padding: 0;
   margin: 0;
-  font: normal 14px / 14px arial;
+  font: normal 14px/14px arial;
   overflow-y: scroll;
 }
 a {
@@ -155,7 +155,7 @@ label {
 .icon {
   cursor: pointer;
   display: inline-block;
-  font: normal normal normal 22px / 1 Pictos;
+  font: normal normal normal 22px/1 Pictos;
   text-rendering: geometricPrecision;
   position: relative;
   text-transform: none;
@@ -174,7 +174,7 @@ label {
 .btn {
   position: relative;
   display: inline-block;
-  font: bold 10px / 10px arial;
+  font: bold 10px/10px arial;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
