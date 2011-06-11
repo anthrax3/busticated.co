@@ -148,8 +148,18 @@ app.get("/post/:id", loadPost, function(req, res, next){
 });
 
 app.get("/admin", function(req, res){
-  res.render("admin", {
-    title: "busticated admin"
+  var postModel = db.model("BlogPost");
+
+  postModel.find({}).sort("createdOn", -1).run(function(err, posts) {
+    if (err) {
+      console.log(err);
+      return next(new Error("Query returned 0 posts"));
+    } else {
+      res.render("admin", {
+        title: "busticated admin",
+        posts: posts
+      });
+    }
   });
 });
 

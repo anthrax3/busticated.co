@@ -1,2 +1,60 @@
-h1= title
-p Welcome to #{title}
+div.page.gs960
+  div.head
+    h1 busticated admin
+    P header content goes here
+
+  div.body
+    div.leftCol.thin
+      h2 Left Column
+      p 250px wide by default
+      ul
+        li item 1
+        li item 2
+        li item 3
+        li item 4
+
+    div.main
+      h2 Latest Posts
+      div.data.posts
+        table.txtL
+          thead
+            tr
+              th
+              th.txtC Title
+              th Author
+              th Created
+              th Last Edit
+              th Published
+              th
+          tbody
+            - for (var key in posts)
+              tr
+                td.txtC
+                  img(src="/img/" + posts[key].thumbPic)
+                td.txtC
+                  span= posts[key].title
+                td
+                  span= posts[key].author
+                td
+                  span= posts[key].createdOn.getMonth() + "/" + posts[key].createdOn.getDate() + "/" + posts[key].createdOn.getFullYear() + " @ " + posts[key].createdOn.toLocaleTimeString()
+                td
+                  span= posts[key].editedOn.getMonth() + "/" + posts[key].editedOn.getDate() + "/" + posts[key].editedOn.getFullYear() + " @ " + posts[key].editedOn.toLocaleTimeString()
+                td.txtC
+                  span= posts[key].isPublished
+                td.txtC
+                  span
+                    a.btn(href="/admin/editPost/" + posts[key]._id) edit
+          tfoot
+            tr
+              td
+              td
+              td
+              td
+              td
+              td
+              td
+
+
+  div.foot
+    h2 Footer
+    p Footer content here
