@@ -1,0 +1,23 @@
+{
+  "author": "Matthew Mirande <itsbusticated@gmail.com>",
+  "name": "busticated.co",
+  "description": "My li'l blog / sandbox",
+  "version": "0.0.2",
+  "homepage": "http://busticated.co",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/busticated/busticated.co.git"
+  },
+  "engines": {
+    "node": "~v0.4.11"
+  },
+  "dependencies": {
+    "express" : "2.x.x",
+    "jade" : "0.x.x",
+    "mongoose-auth" : "0.x.x",
+    "mongoose" : "2.x.x",
+    "mongoose-types" : "1.x.x",
+    "stylus" : "0.x.x"
+  },
+  "devDependencies": {}
+}
